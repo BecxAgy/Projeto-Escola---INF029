@@ -1,57 +1,39 @@
+#include "Alunos.h"
+#include "uteis.h"
 #include <stdio.h>
+Aluno alunos[100];
 
-typedef struct {
-  int dia;
-  int mes;
-  int ano;
-} Data;
-
-
-
-typedef struct {
-  char nome[21];
-  Data nascimento;
-  char cpf[12];
-  char sexo;
-
-} Professor;
-
-
-
-
-
-int imprimeMenu(){
-  int opcao;
-
-  
-   printf("*************Menu*************");
-    printf("Digite a opção:\n");
-    printf("0 - Sair\n");
-    printf("1 - Aluno\n");
-    printf("2 - Professor\n");
-    printf("3 - Disciplina\n");
-  
-    scanf("%d",&opcao);
-
-  return opcao;
-}
-
-
-int main(){
-  Aluno lista_aluno[100];
-  Aluno aluno;
-  
+int main() {
   int qtdAlunos = 0;
-  int opcao = imprimeMenu();
-  
 
- 
-    
-    switch(opcao){
-      
+  int opcao = 1;
+  int opcaoAluno;
+
+  while (opcao != 0) {
+    opcao = imprimeMenu();
+
+    switch (opcao) {
+    case 0: // sair
+      break;
+
+    case 1: // Sessão de Aluno
+      opcaoAluno = menuAluno();
+      switch (opcaoAluno) {
+      case 0: // voltar
+        break;
+
+      case 1: // cadastrar
+        qtdAlunos = cadastrarAluno(alunos[qtdAlunos], qtdAlunos);
+        printf("%i", qtdAlunos);
+        break;
+
+        case 2: //listar
+        
+      }
+
+      // case 2: // Sessão Professor
+
+      // case 3: // Sessão Disciplina
     }
   }
-  
 }
-
-

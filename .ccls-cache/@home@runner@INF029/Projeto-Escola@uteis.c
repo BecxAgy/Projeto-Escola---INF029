@@ -1,21 +1,33 @@
 #include <stdio.h>
+#include <string.h>
+#include "uteis.h"
 
-typedef struct {
-  int dia;
-  int mes;
-  int ano;
-}Data;
 
+int imprimeMenu(){
+  int opcao;
+
+  
+   printf("*************Menu*************");
+    printf("Digite a opção:\n");
+    printf("0 - Sair\n");
+    printf("1 - Aluno\n");
+    printf("2 - Professor\n");
+    printf("3 - Disciplina\n");
+  
+    scanf("%d",&opcao);
+
+  return opcao;
+}
 
 int validarNome(char nome[]) { 
   if(strlen(nome)>20){
+    printf("Nome inválido \n O limite de caracteres é 20. Pf digite um nome válido. \n");
     return 0;
   } else {
+    printf("Nome válido! \n");
     return 1;
   }
 }
-
-
 
 int validarNascimento(Data nascimentoUsuario) {
   if(nascimentoUsuario.ano<=0 || nascimentoUsuario.ano>2022) {
@@ -32,29 +44,30 @@ int validarNascimento(Data nascimentoUsuario) {
       printf("Dia inválido para o mês de fevereiro. \n");
       return 0;
     } else {
+            printf("Nascimento cadastrado com sucesso! \n");
       return 1;
     }
  
   } else if( nascimentoUsuario.dia<=0 || nascimentoUsuario.dia>30){
     return 0;
-  } else return 1; 
+  } else{
+      printf("Nascimento cadastrado com sucesso! \n");
+      return 1;  
+    } 
+     
 }
-
-
-
 
 int validarSexo(char sexo) {
   char sexoValidos[6] =  {'M', 'F','O','o','m', 'f'};
   for(int i = 0; i < 6; i++) {
-    if (sexoValidos[i]== sexo) {
+    if (sexoValidos[i] == sexo) {
+      printf("Sexo válido! \n");
       return 1;
     }
   }
+  printf(" Inválido \n Digite uma das opções válidas.\n Masculino : M ou m\n Feminino: F ou f\n Outro : O ou o \n");
   return 0;
 }
-
-
-
 
 int validarCpf(char cpf[]) {
   int cpfInt[11];
@@ -115,8 +128,3 @@ int validarCpf(char cpf[]) {
 
   
 }
-
-
-
-
-//tem que executar pra gerar o .h
