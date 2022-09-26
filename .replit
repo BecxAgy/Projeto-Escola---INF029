@@ -1,7 +1,7 @@
 compile = ["make", "-s"]
 run = "./main"
 entrypoint = "main.c"
-hidden = ["main", "**/*.o", "**/*.d", ".ccls-cache", "Makefile"]
+hidden = ["main", "main-debug", "**/*.o", "**/*.d", ".ccls-cache", "Makefile"]
 
 [languages.c]
 pattern = "**/*.{c,h}"
@@ -9,11 +9,14 @@ pattern = "**/*.{c,h}"
 [languages.c.languageServer]
 start = "ccls"
 
+[gitHubImport]
+requiredFiles = [".replit", "replit.nix", ".ccls-cache"]
+
 [debugger]
 support = true
 
 [debugger.compile]
-command = ["make"]
+command = ["make", "main-debug"]
 noFileArgs = true
 
 [debugger.interactive]
@@ -51,7 +54,7 @@ externalConsole = false
 logging = {}
 miDebuggerPath = "gdb"
 name = "g++ - Build and debug active file"
-program = "./main"
+program = "./main-debug"
 request = "launch"
 setupCommands = [
 	{ description = "Enable pretty-printing for gdb", ignoreFailures = true, text = "-enable-pretty-printing" }
